@@ -18,16 +18,20 @@
 
 }
 .header{
-    width: 50vw;
+    width: 48vw;
     height: 5vh;
     background-color: #15C7FF;   
     display: flex;
     align-items: center;
     padding-left: 1vw;
     padding-right: 1vw;
+    border-radius: 20px;
+    justify-content: center;
+    margin-bottom: 20px;
   
 }
 .header span{
+
     color: #ffffff;
 }
 .conteudo{
