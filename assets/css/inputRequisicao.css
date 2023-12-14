@@ -7,9 +7,19 @@ input, select{
 }
 
 .chkPrioridade{
-    display: inline;
-    width: 15px;
-    height: 15px;
+    appearance: none;
+    width: 20px;
+    height: 20px;     
+    border: 1px solid #000000;  
+    border-radius: 50%;
+    
+}
+
+.chkPrioridadeDesabilitado{
+    appearance: none;
+    width: 20px;
+    height: 20px;     
+    border: 1px solid #ffffff;  
     border-radius: 50%;
 }
 
@@ -78,9 +88,9 @@ input, select{
 
 .BtnInserirItens{
     background-color:#0095C5 ;
-    width: 100px;
-    height: 30px;
-    border-radius: 20px;
+    width: 90px;
+    height: 50px;
+    border-radius: 30px;
     display: flex;
     justify-content: center;
     align-items: center ;
@@ -89,5 +99,23 @@ input, select{
 }
 .BtnInserirItens span{
     color: #ffffff;
-    font-size: 14px;
+    font-size: 20px;
+}
+
+#urgente:checked{
+    border: 1px solid red;
+    background-color: red;
+    transform: scale(1.2);
+}
+
+#medio:checked{
+    border: 1px solid yellow;
+    background-color: yellow;
+    transform: scale(1.2);
+}
+
+#baixo:checked{
+    border: 1px solid green;
+    background-color: green;
+    transform: scale(1.2);
 }

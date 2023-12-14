@@ -3,72 +3,78 @@ const categorias = [
         "idCategoria": 1,
         "Descrição": "Gestão",
     },
-    
     {
         "idCategoria": 2,
         "Descrição": "Cliente",
-    },
-
+    },  
     {
         "idCategoria": 3,
         "Descrição": "RP",
-    }
+    },
 ]
 
-const motivos = [
+const motivos=[
     {
         "idMotivo": 1,
         "Descrição": "Planejamento",
-        "idCategoria": 1
+        "idCategoria" : 1
     },
-
     {
         "idMotivo": 2,
         "Descrição": "Financeiro",
-        "idCategoria": 1
+        "idCategoria" : 1
     },
-
     {
         "idMotivo": 3,
-        "Descrição": "Quebra de Máquina",
-        "idCategoria": 2
+        "Descrição": "Quebra da Máquina",
+        "idCategoria" : 2
     },
 ]
-
 
 const produtos = [
     {
         "idProduto": 1,
-        "Descricao": "Cola",
+        "Descricao": "Computador",
         "Estoque": 10,
         "EstoqueMinimo": 5
     },
-
     {
         "idProduto": 2,
-        "Descricao": "Pacote de folhas",
+        "Descricao": "Mouse",
         "Estoque": 5,
-        "EstoqueMinimo": 2
+        "EstoqueMinimo": 5
     },
 
     {
         "idProduto": 3,
-        "Descricao": "Marca texto",
-        "Estoque": 7,
-        "EstoqueMinimo": 4
-    },
-
-    {
-        "idProduto": 4,
-        "Descricao": "Caneta",
-        "Estoque": 9,
+        "Descricao": "Notebook",
+        "Estoque": 15,
         "EstoqueMinimo": 5
     },
 
+
+]
+
+const departamentos = [
     {
-        "idProduto": 5,
-        "Descricao": "Lápis",
-        "Estoque": 12,
-        "EstoqueMinimo": 7
-    }
+        "idDep": 10,
+        "Descricao": "Sec. Educacao",
+        "Responsavel": "Jose",
+        "idFunc": 1,
+        "cargo" : "Gerente"
+    },
+    {
+        "idDep": 30,
+        "Descricao": "Sec. do Trabalho",
+        "Responsavel": "Luiz",
+        "idFunc": 2,
+        "cargo" : "Funcionario"
+    },
+    {
+        "idDep": 40,
+        "Descricao": "NAT",
+        "Responsavel": "Maria",
+        "idFunc": 3,
+        "cargo" : "Gestor"
+    },
 ]

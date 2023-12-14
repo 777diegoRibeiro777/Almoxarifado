@@ -1,96 +1,212 @@
-// document.getElementById('departamento').addEventListener('focus', function(){
+// document.getElementById('departamento').addEventListener('focus',function(){
 //     const inputDepartamento = document.getElementById('departamento');
-//     inputDepartamento.style.backgroundColor="green"   
+//     inputDepartamento.style.backgroundColor="#90ee90"
 // });
 
-document.getElementById('departamento').addEventListener('blur', function(){
-    const inputDepartamento = document.getElementById('departamento');
-    inputDepartamento.style.backgroundColor="white"   
-});
+// document.getElementById('departamento').addEventListener('blur',function(){
+//     const inputDepartamento = document.getElementById('departamento');
+//     inputDepartamento.style.backgroundColor="white"
+// });
 
-function adicionarCorAoFocarInput () {
-    const listInput = document.querySelectorAll("input")
+function adicionarCorAoFocarInput() {
+    // const listinput = document.querySelectorAll("input[type=text]");
+    const listinput = document.querySelectorAll("input");
 
-    // console.log(listInput.length);
-    // console.log(listInput);
+    // console.log(listinput.length);
+    // console.log(listinput);
 
-    // listInput[1].style.backgroundColor="green" 
-    // listInput[].style.backgroundColor="green" 
+    // for (let i = 0; i < listinput.length; i++) {
+    //     listinput[i].style.backgroundColor="#90ee90"
+    //   } // colocar cor em todos os .text
 
-    // for (let i = 0; i <  listInput.length; i++) {
-    //     listInput[i].style.backgroundColor="green"
-    // }
+    // listinput[0].style.backgroundColor="#90ee90"
+    // listinput[1].style.backgroundColor="#90ee90"
 
-    // listInput.forEach(function(campo){
-    //     campo.style.backgroundColor="green"
-    // })
+    listinput.forEach(function(campo){
+        campo.addEventListener('focus',function(){
+        campo.style.outlineColor ="#90ee90";
 
-    listInput.forEach(function(item){
-        item.addEventListener('focus', function(){
-            item.style.backgroundColor='green'
         })
-    })
 
-    listInput.forEach(function(item){
-        item.addEventListener('blur', function(){
-            item.style.outlineColor='white'
+        campo.addEventListener('blur',function(){
+            campo.style.outlineColor = "white";
+    
         })
-    })
+        
+    });
+
+
 }
-
-function carregarCategorias() {
+function carregarCategorias(){
     const selectCategoria = document.getElementById('categoriaMotivo');
     selectCategoria.innerHTML="";
-    
+
     const optFirst = document.createElement('option');
-    optFirst.value=-1;
-    optFirst.text="";
+    optFirst.value = -1;
+    optFirst.text = "";
     selectCategoria.add(optFirst);
 
-
     categorias.forEach(function(categoria){
-        const opt = document.createElement('option');
+        var opt = document.createElement('option');
         opt.value=categoria.idCategoria;
         opt.text=categoria.Descrição;
-        selectCategoria.add(opt); 
-    });   
+
+        selectCategoria.add(opt);
+
+    }) 
 }
 
-function carregarMotivos() {
+function carregarMotivos(){
     const selectMotivo = document.getElementById('Motivo');
     selectMotivo.innerHTML="";
 
     const optFirst = document.createElement('option');
-    optFirst.value=-1;
-    optFirst.text="";
+    optFirst.value = -1;
+    optFirst.text = "";
     selectMotivo.add(optFirst);
 
     const valorCategoria = document.getElementById('categoriaMotivo').value;
-    const motivosFiltrados = motivos.filter((m) => m.idCategoria == valorCategoria)
-    
+    console.log("Categoria selecionada: "+ valorCategoria)
+    const motivosFiltrados = motivos.filter((m)=> m.idCategoria==valorCategoria)
+
     motivosFiltrados.forEach(function(motivo){
         var opt = document.createElement('option');
         opt.value=motivo.idMotivo;
         opt.text=motivo.Descrição;
-        selectMotivo.add(opt); 
+        selectMotivo.add(opt);
+
+    }) 
+}
+
+document.getElementById('categoriaMotivo').addEventListener('change',function(){
+    carregarMotivos();
+});
+
+
+
+document.getElementById('CodigoProduto').addEventListener("keyup",function(){
+    const codigoPesquisado = document.getElementById('CodigoProduto').value;
+    let produtosFiltrados = produtos.filter((p)=> p.idProduto==codigoPesquisado);
+
+    if(produtosFiltrados.length > 0){
+        document.getElementById('DescricaoProduto').value=produtosFiltrados[0].Descricao;
+    } else{
+        document.getElementById('DescricaoProduto').value="";
+    }
+    if(produtosFiltrados.length > 0){
+        document.getElementById('Estoque').value=produtosFiltrados[0].Estoque;
+    } else{
+        document.getElementById('Estoque').value="";
+    }
+
+});
+
+document.getElementById('idDepartamento').addEventListener("keyup",function() {
+    const codigoPesquisado = document.getElementById('idDepartamento').value;
+    let departamentosFiltrados = departamentos.filter((p)=> p.idDep==codigoPesquisado);
+
+    if(departamentosFiltrados.length > 0){
+        document.getElementById('departamento').value=departamentosFiltrados[0].Descricao;
+    } else{
+        document.getElementById('departamento').value="";
+    }
+    if(departamentosFiltrados.length > 0){
+        document.getElementById('NomeFuncionario').value=departamentosFiltrados[0].Responsavel;
+    } else{
+        document.getElementById('NomeFuncionario').value="";
+    }
+    if(departamentosFiltrados.length > 0){
+        document.getElementById('idFuncionario').value=departamentosFiltrados[0].idFunc;
+    } else{
+        document.getElementById('idFuncionario').value="";
+    }
+    if(departamentosFiltrados.length > 0){
+        document.getElementById('cargo').value=departamentosFiltrados[0].cargo;
+    } else{
+        document.getElementById('cargo').value="";
+    }
+    
+});
+
+document.getElementById('idFuncionario').addEventListener("keyup",function() {
+    const codigoPesquisado = document.getElementById('idFuncionario').value;
+    let departamentosFiltrados = departamentos.filter((p)=> p.idFunc==codigoPesquisado);
+
+    if(departamentosFiltrados.length > 0){
+        document.getElementById('departamento').value=departamentosFiltrados[0].Descricao;
+    } else{
+        document.getElementById('departamento').value="";
+    }
+    if(departamentosFiltrados.length > 0){
+        document.getElementById('NomeFuncionario').value=departamentosFiltrados[0].Responsavel;
+    } else{
+        document.getElementById('NomeFuncionario').value="";
+    }
+    if(departamentosFiltrados.length > 0){
+        document.getElementById('idDepartamento').value=departamentosFiltrados[0].idDep;
+    } else{
+        document.getElementById('idDepartamento').value="";
+    }
+    if(departamentosFiltrados.length > 0){
+        document.getElementById('cargo').value=departamentosFiltrados[0].cargo;
+    } else{
+        document.getElementById('cargo').value="";
+    }
+    
+});
+
+
+
+
+
+
+
+document.getElementById('btn-gravar').addEventListener('click',function(){
+    const elementosObrigatorios = document.querySelectorAll('[data-obrigatorio="true"]');
+    console.log(elementosObrigatorios);
+    
+    elementosObrigatorios.forEach(function(item){
+        
+        if (item.value=="" || item.value==-1){
+            item.style.backgroundColor='red';
+        } 
+    })
+    const chkUrgenteValue = document.getElementById('urgente').checked;
+    const chkMedioValue = document.getElementById('medio').checked;
+    const chkBaixoValue = document.getElementById('baixo').checked;
+    if (chkUrgenteValue==false && chkMedioValue==false && chkBaixoValue==false){
+        const divPrioridade = document.getElementById("radioPrioridade");        
+        divPrioridade.classList.remove('radioPrioridade');
+        divPrioridade.classList.add('radioPrioridadeDesabilitado');        
+        document.getElementById('urgente').classList.remove('chkPrioridade');
+        document.getElementById('urgente').classList.add('chkPrioridadeDesabilitado');
+        document.getElementById('medio').classList.remove('chkPrioridade');
+        document.getElementById('medio').classList.add('chkPrioridadeDesabilitado');
+        document.getElementById('baixo').classList.remove('chkPrioridade');
+        document.getElementById('baixo').classList.add('chkPrioridadeDesabilitado');
+    }
+});
+
+function eventoClickPrioridadeHabilitarCor(){
+    const checkboxesPrioridade = document.querySelectorAll('.chkPrioridade');    
+    console.log(checkboxesPrioridade);
+    checkboxesPrioridade.forEach(function(checkbox) {
+        checkbox.addEventListener('click', function() {    
+            const divPrioridade = document.getElementById("radioPrioridade");
+            divPrioridade.classList.add('radioPrioridade');
+            divPrioridade.classList.remove('radioPrioridadeDesabilitado');        
+            document.getElementById('urgente').classList.add('chkPrioridade');
+            document.getElementById('urgente').classList.remove('chkPrioridadeDesabilitado');
+            document.getElementById('medio').classList.add('chkPrioridade');
+            document.getElementById('medio').classList.remove('chkPrioridadeDesabilitado');
+            document.getElementById('baixo').classList.add('chkPrioridade');
+            document.getElementById('baixo').classList.remove('chkPrioridadeDesabilitado');
+        });
     });
 }
 
-document.getElementById('categoriaMotivo').addEventListener('change', function() {
-    carregarMotivos();
-})
 
-document.getElementById('CodigoProduto').addEventListener("keyup", function() {
-    const codigoPesquisado = document.getElementById('CodigoProduto').value;
-    let produtosFiltrados = produtos.filter((p) => p.idProduto == codigoPesquisado);
 
-    if (produtosFiltrados.length>0) {
-        document.getElementById('DescricaoProduto').value=produtosFiltrados[0].Descricao;
-    } else {
-        document.getElementById('DescricaoProduto').value="";
-    }
-})
-
-adicionarCorAoFocarInput();
+adicionarCorAoFocarInput(); // Inicia a função ao carregar a página 
 carregarCategorias();
 carregarMotivos();
