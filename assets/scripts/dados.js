@@ -29,6 +29,11 @@ const motivos=[
         "Descrição": "Quebra da Máquina",
         "idCategoria" : 2
     },
+    {
+        "idMotivo": 4,
+        "Descrição": "Estudo de Função",
+        "idCategoria" : 3
+    },
 ]
 
 const produtos = [
@@ -36,20 +41,26 @@ const produtos = [
         "idProduto": 1,
         "Descricao": "Computador",
         "Estoque": 10,
-        "EstoqueMinimo": 5
+        "EstoqueMinimo": 5,
+        "Unidade": "Un",
+        "Preco": 10.00
     },
     {
         "idProduto": 2,
         "Descricao": "Mouse",
         "Estoque": 5,
-        "EstoqueMinimo": 5
+        "EstoqueMinimo": 5,
+        "Unidade": "Un",
+        "Preco": 10.00
     },
 
     {
         "idProduto": 3,
         "Descricao": "Notebook",
         "Estoque": 15,
-        "EstoqueMinimo": 5
+        "EstoqueMinimo": 5,
+        "Unidade": "Un",
+        "Preco": 10.00
     },
 
 

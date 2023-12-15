@@ -1,78 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Almoxarifado</title>
     <link rel="stylesheet" href="/assets/css/requisicao.css" />
     <link rel="stylesheet" href="/assets/css/inputRequisicao.css" />
+    <link rel="stylesheet" href="./assets/css/table.css"/>
   </head>
   <body>
     <div class="menu"></div>
 
     <div class="main">
+      <div class="header">
+        <span>Novo Pedido de Requisição</span>
+      </div>
       <div class="conteudo">
-        <div class="header">
-          <span>Novo Pedido de Requisição</span>
-        </div>
         <div class="dadosPrincipais">
           <div class="titulo">
             <span>Dados Principais | Requisição Nº </span>
-            <input type="number" id="inpNumero" />
+            <input type="number" id="inpNumero" data-obrigatorio="true" />
           </div>
           <div class="camposPrincipais">
             <div class="camposPrincipaisLinha1 linhasCampos">
               <div class="grupo1 grupoInput">
                 <span>ID.</span>
-                <input type="number" id="idDepartamento" />
+                <input
+                  type="number"
+                  id="idDepartamento"
+                  data-obrigatorio="true"
+                  data-only-number="true"
+                />
               </div>
               <div class="grupo2 grupoInput">
                 <span>Departamento</span>
-                <input type="text" id="departamento" />
+                <input type="text" id="departamento" data-obrigatorio="true" />
               </div>
               <div class="grupo3 grupoInput">
                 <span>Data</span>
-                <input type="date" id="dataRequisicao" />
+                <input
+                  type="date"
+                  id="dataRequisicao"
+                  data-obrigatorio="true"
+                />
               </div>
             </div>
             <div class="camposPrincipaisLinha2 linhasCampos">
               <div class="grupo4 grupoInput">
                 <span>ID Func.</span>
-                <input type="number" id="idFuncionario" />
+                <input
+                  type="number"
+                  id="idFuncionario"
+                  data-obrigatorio="true"
+                  data-only-number="true"
+                />
               </div>
               <div class="grupo5 grupoInput">
                 <span>Nome Funcionário</span>
-                <input type="text" id="NomeFuncionario" />
+                <input
+                  type="text"
+                  id="NomeFuncionario"
+                  data-obrigatorio="true"
+                />
               </div>
               <div class="grupo6 grupoInput">
                 <span>Cargo</span>
-                <input type="text" id="cargo" />
+                <input type="text" id="cargo" data-obrigatorio="true" />
               </div>
             </div>
             <div class="camposPrincipaisLinha3 linhasCampos">
               <div class="grupo7 grupoInput">
                 <span>Categoria Motivo</span>
                 <div class="grupoCategoria">
-                  <select id="categoriaMotivo"></select>
+                  <select id="categoriaMotivo" data-obrigatorio="true"></select>
                   <img class="btnAdd" src="/assets/img/add.svg" alt="" />
                 </div>
               </div>
               <div class="grupo8 grupoInput">
                 <span>Motivo</span>
                 <div class="grupoMotivo">
-                  <select id="Motivo"></select>
+                  <select id="Motivo" data-obrigatorio="true"></select>
                   <img class="btnAdd" src="/assets/img/add.svg" alt="" />
                 </div>
               </div>
               <div class="grupo9 grupoInput">
                 <span>Nível de Prioridade</span>
-                <div class="radioPrioridade">
+                <div class="radioPrioridade" id="radioPrioridade">
                   <div class="grupoPrioridade">
                     <input
                       class="chkPrioridade"
                       type="radio"
                       name="prioridade"
                       id="urgente"
+                      data-obrigatorio="true"
                     />
                     <span>Urgente</span>
                   </div>
@@ -82,6 +102,7 @@
                       type="radio"
                       name="prioridade"
                       id="medio"
+                      data-obrigatorio="true"
                     />
                     <span>Médio</span>
                   </div>
@@ -91,6 +112,7 @@
                       type="radio"
                       name="prioridade"
                       id="baixo"
+                      data-obrigatorio="true"
                     />
                     <span>Baixo</span>
                   </div>
@@ -107,15 +129,24 @@
             <div class="linhaAdicionarItens">
               <div class="grupoProduto">
                 <span>Cod. Produto</span>
-                <input type="text" id="CodigoProduto" />
+                <input
+                  type="text"
+                  id="CodigoProduto"
+                  data-obrigatorio="true"
+                  data-only-number="true"
+                />
               </div>
               <div class="grupoProdutoDescricao">
                 <span>Descrição</span>
-                <input type="text" id="DescricaoProduto" />
+                <input
+                  type="text"
+                  id="DescricaoProduto"
+                  data-obrigatorio="true"
+                />
               </div>
               <div class="grupoEstoque">
                 <span>Quantidade</span>
-                <input type="text" id="Estoque" />
+                <input type="text" id="Estoque" data-obrigatorio="true" />
               </div>
 
               <div class="grupoStatusEstoque">
@@ -123,22 +154,21 @@
                   <img src="/assets/img/verde.svg" alt="" />
                 </div>
               </div>
-              <div class="grupoBtnInserirItens">
-                <div class="BtnInserirItens">
-                  <span>Adicionar</span>
-                </div>
+              <div class="BtnInserirItens" id="BtnInserirItens">
+                <span>Adcionar</span>
               </div>
             </div>
-            <div class="tabelaItens">Criar a tabela aqui</div>
-          </div>
-          <div class="grupoBtnInserirItens">
-          </div>
-        </div>
-      </div>
+						<div class="tabelaItens" id="tabelaItens">Criar a tabela aqui</div>
+						<div class="grupoBtnInserirItens"></div>
+						<div class="BtnInserirItens" id="btn-gravar">
+						<span>Gravar</span>
+					</div>
+				</div>
+			</div>
+		</div>
     </div>
 
-    <script src="/assets/scripts/dados.js"></script>
-    <script src="/assets/scripts/main.js"></script>
+    <script src="./assets/scripts/dados.js"></script>
+    <script src="./assets/scripts/main.js"></script>
   </body>
 </html>
-

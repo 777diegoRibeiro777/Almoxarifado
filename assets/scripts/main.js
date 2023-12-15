@@ -161,21 +161,77 @@ document.getElementById('idFuncionario').addEventListener("keyup",function() {
 
 
 
+// document.getElementById('btn-gravar').addEventListener('click',function(){
+//     const elementosObrigatorios = document.querySelectorAll('[data-obrigatorio="true"]');
+//     console.log(elementosObrigatorios);
+    
+//     elementosObrigatorios.forEach(function(item){
+        
+//         if (item.value=="" || item.value==-1){
+//             item.style.backgroundColor='red';
+//         } 
+//     })
+//     const chkUrgenteValue = document.getElementById('urgente').checked;
+//     const chkMedioValue = document.getElementById('medio').checked;
+//     const chkBaixoValue = document.getElementById('baixo').checked;
+//     if (chkUrgenteValue==false && chkMedioValue==false && chkBaixoValue==false){
+//         const divPrioridade = document.getElementById("radioPrioridade");        
+//         divPrioridade.classList.remove('radioPrioridade');
+//         divPrioridade.classList.add('radioPrioridadeDesabilitado');        
+//         document.getElementById('urgente').classList.remove('chkPrioridade');
+//         document.getElementById('urgente').classList.add('chkPrioridadeDesabilitado');
+//         document.getElementById('medio').classList.remove('chkPrioridade');
+//         document.getElementById('medio').classList.add('chkPrioridadeDesabilitado');
+//         document.getElementById('baixo').classList.remove('chkPrioridade');
+//         document.getElementById('baixo').classList.add('chkPrioridadeDesabilitado');
+//     }
+// });
+
+// function eventoClickPrioridadeHabilitarCor(){
+//     const checkboxesPrioridade = document.querySelectorAll('.chkPrioridade');    
+//     console.log(checkboxesPrioridade);
+//     checkboxesPrioridade.forEach(function(checkbox) {
+//         checkbox.addEventListener('click', function() {    
+//             const divPrioridade = document.getElementById("radioPrioridade");
+//             divPrioridade.classList.add('radioPrioridade');
+//             divPrioridade.classList.remove('radioPrioridadeDesabilitado');        
+//             document.getElementById('urgente').classList.add('chkPrioridade');
+//             document.getElementById('urgente').classList.remove('chkPrioridadeDesabilitado');
+//             document.getElementById('medio').classList.add('chkPrioridade');
+//             document.getElementById('medio').classList.remove('chkPrioridadeDesabilitado');
+//             document.getElementById('baixo').classList.add('chkPrioridade');
+//             document.getElementById('baixo').classList.remove('chkPrioridadeDesabilitado');
+//         });
+//     });
+// }
+
+
 document.getElementById('btn-gravar').addEventListener('click',function(){
     const elementosObrigatorios = document.querySelectorAll('[data-obrigatorio="true"]');
-    console.log(elementosObrigatorios);
+    // console.log(elementosObrigatorios);
     
+    let validadoCamposPreenhcidos=true;
+
+    setTimeout(function(){ 
+        // validadoCamposPreenhcidos=true;           
+        if(validadoCamposPreenhcidos){
+            document.getElementById('modalSucesso').style.display='block';
+        }
+    },1000);
+
     elementosObrigatorios.forEach(function(item){
         
         if (item.value=="" || item.value==-1){
             item.style.backgroundColor='red';
+            validadoCamposPreenhcidos=false;
         } 
     })
+
     const chkUrgenteValue = document.getElementById('urgente').checked;
     const chkMedioValue = document.getElementById('medio').checked;
     const chkBaixoValue = document.getElementById('baixo').checked;
     if (chkUrgenteValue==false && chkMedioValue==false && chkBaixoValue==false){
-        const divPrioridade = document.getElementById("radioPrioridade");        
+        const divPrioridade = document.getElementById("radioPrioridade");
         divPrioridade.classList.remove('radioPrioridade');
         divPrioridade.classList.add('radioPrioridadeDesabilitado');        
         document.getElementById('urgente').classList.remove('chkPrioridade');
@@ -184,7 +240,8 @@ document.getElementById('btn-gravar').addEventListener('click',function(){
         document.getElementById('medio').classList.add('chkPrioridadeDesabilitado');
         document.getElementById('baixo').classList.remove('chkPrioridade');
         document.getElementById('baixo').classList.add('chkPrioridadeDesabilitado');
-    }
+        validadoCamposPreenhcidos=false;
+    }   
 });
 
 function eventoClickPrioridadeHabilitarCor(){
@@ -206,7 +263,66 @@ function eventoClickPrioridadeHabilitarCor(){
 }
 
 
+function adcionarRegraCamposSomenteNumeros(){
+    const elementosAceitaSoNumeros = document.querySelectorAll('[data-only-number="true"]')
+    elementosAceitaSoNumeros.forEach(function(campo){
+        campo.addEventListener('keypress',function(e){
+            if (e.keyCode<48 || e.keyCode>59){
+                e.preventDefault();
+            }
+        })
+    })
+} // adcionar numero
+
+
+// document.getElementById('fecharModal').addEventListener('click',function(){
+
+// })
+
+
+
 
 adicionarCorAoFocarInput(); // Inicia a função ao carregar a página 
 carregarCategorias();
 carregarMotivos();
+adcionarRegraCamposSomenteNumeros();
+
+document.getElementById('BtnInserirItens').addEventListener('click',function(){
+    const tabelaItens = document.getElementById("tabelaItens")
+
+    const campoProduto = document.getElementById('CodigoProduto')
+    const campoDescricaoProduto = document.getElementById('DescricaoProduto')
+    const campoQuantidade = document.getElementById('Estoque')
+    const totalRequisicao = document.getElementById('total')
+
+    const linha = document.createElement('tr')
+
+    const tdCodigo = document.createElement('td')
+    const tdDrescricao= document.createElement('td')
+    const tdQuantidade = document.createElement('td')
+    const tdUnd = document.createElement('td')
+    const tdPreco = document.createElement('td')
+    const tdTotalLinha = document.createElement('td')
+    const tdBtnRemover = document.createElement('td')
+
+
+    const produtoPesquisado = produtos.filter((p)=> p.idProduto==campoProduto.value)
+    console.log(produtoPesquisado)
+
+    tdCodigo.innerHTML =  campoProduto.value
+    tdDrescricao.innerHTML =  campoDescricaoProduto.value
+    tdQuantidade.innerHTML =  campoQuantidade.value
+    tdUnd.innerHTML =  produtoPesquisado[0].Unidade
+    tdPreco.innerHTML =  produtoPesquisado[0].Preco
+    tdTotalLinha.innerHTML =  campoQuantidade.value*produtoPesquisado[0].Preco
+    
+    
+    linha.appendChild(tdCodigo)
+    linha.appendChild(tdDrescricao)
+    linha.appendChild(tdQuantidade)
+    linha.appendChild(tdUnd)
+    linha.appendChild(tdPreco)
+    linha.appendChild(tdTotalLinha)
+    tabelaItens.appendChild(linha)
+
+})

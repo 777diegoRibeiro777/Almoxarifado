@@ -87,7 +87,7 @@ input, select{
 }
 
 .BtnInserirItens{
-    background-color:#0095C5 ;
+    background-color:black ;
     width: 90px;
     height: 50px;
     border-radius: 30px;
@@ -97,6 +97,19 @@ input, select{
     cursor: pointer;
 
 }
+
+#BtnInserirItens{
+    background-color:#0095C5 ;
+    width: 70px;
+    height: 50px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
 .BtnInserirItens span{
     color: #ffffff;
     font-size: 20px;
