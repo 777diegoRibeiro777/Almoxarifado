@@ -89,13 +89,14 @@ select {
 
 .BtnInserirItens {
   background-color: black;
-  width: 90px;
-  height: 50px;
-  border-radius: 30px;
+  width: 100px;
+  height: 30px;
+  border-radius: 20px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center ;
   cursor: pointer;
+  margin-left: 1rem;
   transition: 0.5s;
 }
 
@@ -142,4 +143,19 @@ select {
   background-color: green;
   transform: scale(1.2);
 
+}
+
+#btn-gravar {
+  margin-bottom: 10px;
+}
+
+#total::-webkit-inner-spin-button,
+#total::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: none;
 }

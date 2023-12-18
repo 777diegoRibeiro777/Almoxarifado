@@ -374,6 +374,18 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+  // Seleciona todos os inputs do tipo number
+  var numberInputs = document.querySelectorAll('input[type="number"]');
+
+  // Desativa as setas para cada input do tipo number
+  numberInputs.forEach(function (input) {
+    input.addEventListener('wheel', function (e) {
+      e.preventDefault();
+    });
+  });
+});
+
 criarBtnRemover();
 adicionarCorAoFocarInput(); // Inicia a função ao carregar a página
 carregarCategorias();
