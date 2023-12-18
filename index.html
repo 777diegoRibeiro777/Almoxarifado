@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Almoxarifado</title>
-    <link rel="stylesheet" href="/assets/css/requisicao.css" />
-    <link rel="stylesheet" href="/assets/css/inputRequisicao.css" />
-    <link rel="stylesheet" href="./assets/css/table.css"/>
+    <link rel="stylesheet" href="./assets/css/requisicao.css" />
+    <link rel="stylesheet" href="./assets/css/inputRequisicao.css" />
+    <link rel="stylesheet" href="./assets/css/table.css" />
+    <link rel="stylesheet" href="./assets/css/tooltip.css">
   </head>
   <body>
     <div class="menu"></div>
@@ -19,14 +20,14 @@
         <div class="dadosPrincipais">
           <div class="titulo">
             <span>Dados Principais | Requisição Nº </span>
-            <input type="number" id="inpNumero" data-obrigatorio="true" />
+            <input type="text" id="inpNumero" data-obrigatorio="true" data-only-number="true"/>
           </div>
           <div class="camposPrincipais">
             <div class="camposPrincipaisLinha1 linhasCampos">
               <div class="grupo1 grupoInput">
                 <span>ID.</span>
                 <input
-                  type="number"
+                  type="text"
                   id="idDepartamento"
                   data-obrigatorio="true"
                   data-only-number="true"
@@ -34,7 +35,7 @@
               </div>
               <div class="grupo2 grupoInput">
                 <span>Departamento</span>
-                <input type="text" id="departamento" data-obrigatorio="true" />
+                <input type="text" id="departamento" data-obrigatorio="true"/>
               </div>
               <div class="grupo3 grupoInput">
                 <span>Data</span>
@@ -49,7 +50,7 @@
               <div class="grupo4 grupoInput">
                 <span>ID Func.</span>
                 <input
-                  type="number"
+                  type="text"
                   id="idFuncionario"
                   data-obrigatorio="true"
                   data-only-number="true"
@@ -123,7 +124,7 @@
         </div>
         <div class="itensRequisicao">
           <div class="titulo">
-            <span>Dados Principais | Requisição Nº </span>
+            <span>Itens da Requisição</span>
           </div>
           <div class="camposItens">
             <div class="linhaAdicionarItens">
@@ -148,24 +149,40 @@
                 <span>Quantidade</span>
                 <input type="text" id="Estoque" data-obrigatorio="true" />
               </div>
+              <div class="grupoTotal">
+                <span>Total</span>
+                <input type="number" id="total" data-obrigatorio="true"/>
+              </div>
 
               <div class="grupoStatusEstoque">
-                <div>
-                  <img src="/assets/img/verde.svg" alt="" />
+                <div class="tooltip-container">
+                  <img class="image-with-tooltip" src="/assets/img/verde.svg" alt="" class="element-with-tooltip" data-tooltip=""/>
                 </div>
               </div>
               <div class="BtnInserirItens" id="BtnInserirItens">
-                <span>Adcionar</span>
+                <span>Adicionar</span>
               </div>
             </div>
-						<div class="tabelaItens" id="tabelaItens">Criar a tabela aqui</div>
-						<div class="grupoBtnInserirItens"></div>
-						<div class="BtnInserirItens" id="btn-gravar">
-						<span>Gravar</span>
-					</div>
-				</div>
-			</div>
-		</div>
+            <div class="tabelaItens">
+              <table class="tabelaItens" id="tabelaItens">
+                <tr>
+                  <th>Código</th>
+                  <th>Produto</th>
+                  <th>Qtd</th>
+                  <th>Un.</th>
+                  <th>Preço</th>
+                  <th>Total</th>
+                  <th></th>
+                </tr>
+              </table>
+            </div>
+            <div class="grupoBtnInserirItens"></div>
+            <div class="BtnInserirItens" id="btn-gravar">
+              <span>Gravar</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="./assets/scripts/dados.js"></script>
