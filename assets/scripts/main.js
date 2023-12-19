@@ -50,27 +50,26 @@ function carregarCategorias() {
   });
 }
 
-function carregarMotivos() {
-  const selectMotivo = document.getElementById("Motivo");
-  selectMotivo.innerHTML = "";
+function carregarMotivos(){
+  const selectMotivo = document.getElementById('Motivo');
+  selectMotivo.innerHTML="";
 
-  const optFirst = document.createElement("option");
+  const optFirst = document.createElement('option');
   optFirst.value = -1;
   optFirst.text = "";
   selectMotivo.add(optFirst);
 
-  const valorCategoria = document.getElementById("categoriaMotivo").value;
-  console.log("Categoria selecionada: " + valorCategoria);
-  const motivosFiltrados = motivos.filter(
-    (m) => m.idCategoria == valorCategoria
-  );
+  const valorCategoria = document.getElementById('categoriaMotivo').value;
+  console.log("Categoria selecionada: " + valorCategoria)
+  const motivosFiltrados = motivos.filter((m)=> m.idCategoria==valorCategoria)
 
-  motivosFiltrados.forEach(function (motivo) {
-    var opt = document.createElement("option");
-    opt.value = motivo.idMotivo;
-    opt.text = motivo.Descrição;
-    selectMotivo.add(opt);
-  });
+  motivosFiltrados.forEach(function(motivo){
+      var opt = document.createElement('option');
+      opt.value=motivo.idMotivo;
+      opt.text=motivo.Descrição;
+      selectMotivo.add(opt);
+
+  }) 
 }
 
 document
@@ -315,7 +314,7 @@ document
     const produtoPesquisado = produtos.filter(
       (p) => p.idProduto == campoProduto.value
     );
-    console.log(produtoPesquisado);
+    console.log(produtoPesquisado)
 
     tdCodigo.innerHTML = campoProduto.value;
     tdDrescricao.innerHTML = campoDescricaoProduto.value;
@@ -386,8 +385,37 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+function verificarEstoque() {
+  const codigoProdutoInput = document.getElementById('CodigoProduto');
+  const codigoProduto = parseInt(codigoProdutoInput.value);
+
+  const produto = produtos.find(p => p.idProduto === codigoProduto);
+
+  if (produto) {
+      const nivelImg = document.getElementById('nivel');
+
+      const estoqueMinimo = produto.EstoqueMinimo;
+      const limiteSuperior = estoqueMinimo * 1.1;
+      const limiteInferior = estoqueMinimo * 0.9;
+
+      if (produto.Estoque > limiteSuperior) {
+          nivelImg.src = "assets/img/verde.svg";
+      } else if (produto.Estoque < limiteInferior) {
+          nivelImg.src = "assets/img/vermelho.svg"; 
+      } 
+      else {
+          nivelImg.src = "assets/img/amarelo.svg"; 
+      }
+    }
+    return;
+}
+
+
+verificarEstoque();
 criarBtnRemover();
 adicionarCorAoFocarInput(); // Inicia a função ao carregar a página
 carregarCategorias();
 carregarMotivos();
 adcionarRegraCamposSomenteNumeros();
+
+

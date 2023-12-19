@@ -135,6 +135,7 @@
                   id="CodigoProduto"
                   data-obrigatorio="true"
                   data-only-number="true"
+                  onchange="verificarEstoque()"
                 />
               </div>
               <div class="grupoProdutoDescricao">
@@ -147,18 +148,18 @@
               </div>
               <div class="grupoEstoque">
                 <span>Quantidade</span>
-                <input type="text" id="Estoque" data-obrigatorio="true" />
+                <input type="text" id="Estoque"  data-only-number="true"/>
               </div>
               <div class="grupoTotal">
-                <span>Total</span>
-                <input type="number" id="total" data-obrigatorio="true"/>
+                <span id="total"></span>
               </div>
 
-              <div class="grupoStatusEstoque">
+              <div class="grupoStatusEstoque" id="EstoqueMinimo"> 
                 <div class="tooltip-container">
-                  <img class="image-with-tooltip" src="/assets/img/verde.svg" alt="" class="element-with-tooltip" data-tooltip=""/>
-                </div>
-              </div>
+                    <img src="assets/img/branco.svg" alt="" id="nivel" class="image-with-tooltip">
+                </div>                           
+            </div>
+
               <div class="BtnInserirItens" id="BtnInserirItens">
                 <span>Adicionar</span>
               </div>

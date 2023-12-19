@@ -40,7 +40,7 @@ const produtos = [
   {
     idProduto: 1,
     Descricao: "Computador",
-    Estoque: 10,
+    Estoque: 5,
     EstoqueMinimo: 5,
     Unidade: "Un",
     Preco: 10,
@@ -48,7 +48,7 @@ const produtos = [
   {
     idProduto: 2,
     Descricao: "Mouse",
-    Estoque: 5,
+    Estoque: 10,
     EstoqueMinimo: 5,
     Unidade: "Un",
     Preco: 10,
@@ -57,7 +57,7 @@ const produtos = [
   {
     idProduto: 3,
     Descricao: "Notebook",
-    Estoque: 15,
+    Estoque: 4,
     EstoqueMinimo: 5,
     Unidade: "Un",
     Preco: 10,

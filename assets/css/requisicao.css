@@ -160,8 +160,11 @@ body {
 .grupoStatusEstoque {
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-left: 5px;
+  align-items: center;  
+  margin-left: 5px;      
+  position: relative; /*legenda */
+  display: inline-block   
+
 }
 .grupoStatusEstoque img {
   display: flex;
@@ -202,3 +205,47 @@ body {
   border-collapse: collapse;
   padding-left: 10px;
 }
+
+.radioPrioridade{  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 3px;
+  padding-left: 1px;
+  padding-right: 5px;
+  border-color: #CDCDCD;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  color: #000000;
+  margin-left: 8px;
+}
+
+.radioPrioridadeDesabilitado{  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 3px;
+  padding-left: 1px;
+  padding-right: 5px;
+  border-color: #CDCDCD;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  background-color: red;
+  color:#ffffff;
+}
+
+.grupoPrioridade{
+  display: flex;  
+}
+
+#nivel{
+  margin-left: 4px;
+  border: 1px solid #CDCDCD;
+  width: 30px;
+  height: 25px;
+}
+
