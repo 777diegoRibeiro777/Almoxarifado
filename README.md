@@ -19,7 +19,7 @@ Projeto desenvolvido no treinamento programador fullstack (Realizado pelo SENAI)
   <p align="center">Tabela preenchida</p>
 
 <p align="center">
-  <a href="https://658129e9e9642c67659d8157--splendorous-starlight-c2b50a.netlify.app/" style="font-weight: bold;" target="_blank">💎 Link para o projeto.</a>
+  <a href="https://splendorous-starlight-c2b50a.netlify.app/" style="font-weight: bold;" target="_blank">💎 Link para o projeto.</a>
 </p>
 
 ## 🚀 Tecnologias
