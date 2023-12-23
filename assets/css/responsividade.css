@@ -1,0 +1,185 @@
+.menu {
+    font-size: 15px;
+}
+
+.header {
+    font-size: 2rem;
+}
+
+.conteudo {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dadosPrincipais,
+.itensRequisicao {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.titulo {
+    font-size: 1.5rem;
+}
+
+.grupoInput {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+@media only screen and (max-width: 768px) {
+    .conteudo {
+        flex-direction: column;
+    }
+
+    .dadosPrincipais {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .camposPrincipaisLinha1,
+    .camposPrincipaisLinha2,
+    .camposPrincipaisLinha3 {
+        flex-direction: column;
+        
+    }
+
+    .grupoInput {
+        width: 100%;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: start;
+        justify-content: center;
+    }
+
+    .camposItens .linhaAdicionarItens {
+        flex-direction: column;
+    }
+
+    .linhaAdicionarItens {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+    
+    }
+
+    .grupoProduto,
+    .grupoProdutoDescricao,
+    .grupoEstoque,
+    .grupoQuantidade {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .tabelaItens {
+        max-width: 100%;
+        overflow-x: auto;
+        font-size: 8px;
+    }
+
+    table {
+        display: flex;
+        justify-items: center;
+        flex-direction: column;
+    }
+
+    #btnRemover {
+        font-size: 8px;
+    }
+
+    .grupoTotal,
+    .grupoBtnInserirItens {
+        width: 100%;
+    }
+
+    .menu {
+        font-size: 15px;
+    }
+
+    .header {
+        font-size: 1.5rem;
+    }
+
+    .dadosPrincipais,
+    .itensRequisicao {
+        padding: 10px;
+        max-width: 100%;
+    }
+
+    .titulo {
+        font-size: 1.2rem;
+    }
+
+    .grupoInput {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+
+    .camposItens .linhaAdicionarItens {
+        flex-direction: column;
+    }
+
+    .BtnInserirItens {
+        margin-top: 10px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+
+    .grupoMotivo,
+    .grupoCategoria {
+        flex-direction: column;
+    }
+
+    .titulo {
+        font-size: 1rem;
+    }
+
+    .grupoInput {
+        margin-bottom: 5px;
+    }
+
+    .BtnInserirItens {
+        margin-top: 15px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .titulo {
+        font-size: 0.5rem;
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.conteudo {
+    margin-bottom: 15px;
+}
+
+.conteudo span {
+    display: block;
+}
+
+.conteudo .BtnInserirItens {
+    padding: 5px 5px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0;
+    }
+}

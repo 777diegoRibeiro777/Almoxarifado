@@ -1,26 +1,5 @@
-// document.getElementById('departamento').addEventListener('focus',function(){
-//     const inputDepartamento = document.getElementById('departamento');
-//     inputDepartamento.style.backgroundColor="#90ee90"
-// });
-
-// document.getElementById('departamento').addEventListener('blur',function(){
-//     const inputDepartamento = document.getElementById('departamento');
-//     inputDepartamento.style.backgroundColor="white"
-// });
-
-function adicionarCorAoFocarInput() {
-  // const listinput = document.querySelectorAll("input[type=text]");
+const adicionarCorAoFocarInput = () => {
   const listinput = document.querySelectorAll("input");
-
-  // console.log(listinput.length);
-  // console.log(listinput);
-
-  // for (let i = 0; i < listinput.length; i++) {
-  //     listinput[i].style.backgroundColor="#90ee90"
-  //   } // colocar cor em todos os .text
-
-  // listinput[0].style.backgroundColor="#90ee90"
-  // listinput[1].style.backgroundColor="#90ee90"
 
   listinput.forEach(function (campo) {
     campo.addEventListener("focus", function () {
@@ -31,8 +10,8 @@ function adicionarCorAoFocarInput() {
       campo.style.outlineColor = "white";
     });
   });
-}
-function carregarCategorias() {
+};
+const carregarCategorias = () => {
   const selectCategoria = document.getElementById("categoriaMotivo");
   selectCategoria.innerHTML = "";
 
@@ -44,33 +23,34 @@ function carregarCategorias() {
   categorias.forEach(function (categoria) {
     var opt = document.createElement("option");
     opt.value = categoria.idCategoria;
-    opt.text = categoria.Descrição;
+    opt.text = categoria.Descricao;
 
     selectCategoria.add(opt);
   });
-}
+};
 
-function carregarMotivos(){
-  const selectMotivo = document.getElementById('Motivo');
-  selectMotivo.innerHTML="";
+const carregarMotivos = () => {
+  const selectMotivo = document.getElementById("Motivo");
+  selectMotivo.innerHTML = "";
 
-  const optFirst = document.createElement('option');
+  const optFirst = document.createElement("option");
   optFirst.value = -1;
   optFirst.text = "";
   selectMotivo.add(optFirst);
 
-  const valorCategoria = document.getElementById('categoriaMotivo').value;
-  console.log("Categoria selecionada: " + valorCategoria)
-  const motivosFiltrados = motivos.filter((m)=> m.idCategoria==valorCategoria)
+  const valorCategoria = document.getElementById("categoriaMotivo").value;
+  console.log("Categoria selecionada: " + valorCategoria);
+  const motivosFiltrados = motivos.filter(
+    (m) => m.idCategoria == valorCategoria
+  );
 
-  motivosFiltrados.forEach(function(motivo){
-      var opt = document.createElement('option');
-      opt.value=motivo.idMotivo;
-      opt.text=motivo.Descrição;
-      selectMotivo.add(opt);
-
-  }) 
-}
+  motivosFiltrados.forEach(function (motivo) {
+    var opt = document.createElement("option");
+    opt.value = motivo.idMotivo;
+    opt.text = motivo.Descricao;
+    selectMotivo.add(opt);
+  });
+};
 
 document
   .getElementById("categoriaMotivo")
@@ -95,6 +75,12 @@ document.getElementById("CodigoProduto").addEventListener("keyup", function () {
   } else {
     document.getElementById("Estoque").value = "";
   }
+  if (produtosFiltrados.length > 0) {
+    document.getElementById("total").value = produtosFiltrados[0].Estoque;
+  } else {
+    document.getElementById("total").value = "";
+  }
+  verificarEstoque();
 });
 
 document
@@ -124,7 +110,8 @@ document
       document.getElementById("idFuncionario").value = "";
     }
     if (departamentosFiltrados.length > 0) {
-      document.getElementById("cargo").value = departamentosFiltrados[0].cargo;
+      document.getElementById("cargo").value =
+        departamentosFiltrados[0].idCargo;
     } else {
       document.getElementById("cargo").value = "";
     }
@@ -155,66 +142,20 @@ document.getElementById("idFuncionario").addEventListener("keyup", function () {
     document.getElementById("idDepartamento").value = "";
   }
   if (departamentosFiltrados.length > 0) {
-    document.getElementById("cargo").value = departamentosFiltrados[0].cargo;
+    document.getElementById("cargo").value = departamentosFiltrados[0].idCargo;
   } else {
     document.getElementById("cargo").value = "";
   }
 });
 
-// document.getElementById('btn-gravar').addEventListener('click',function(){
-//     const elementosObrigatorios = document.querySelectorAll('[data-obrigatorio="true"]');
-//     console.log(elementosObrigatorios);
-
-//     elementosObrigatorios.forEach(function(item){
-
-//         if (item.value=="" || item.value==-1){
-//             item.style.backgroundColor='red';
-//         }
-//     })
-//     const chkUrgenteValue = document.getElementById('urgente').checked;
-//     const chkMedioValue = document.getElementById('medio').checked;
-//     const chkBaixoValue = document.getElementById('baixo').checked;
-//     if (chkUrgenteValue==false && chkMedioValue==false && chkBaixoValue==false){
-//         const divPrioridade = document.getElementById("radioPrioridade");
-//         divPrioridade.classList.remove('radioPrioridade');
-//         divPrioridade.classList.add('radioPrioridadeDesabilitado');
-//         document.getElementById('urgente').classList.remove('chkPrioridade');
-//         document.getElementById('urgente').classList.add('chkPrioridadeDesabilitado');
-//         document.getElementById('medio').classList.remove('chkPrioridade');
-//         document.getElementById('medio').classList.add('chkPrioridadeDesabilitado');
-//         document.getElementById('baixo').classList.remove('chkPrioridade');
-//         document.getElementById('baixo').classList.add('chkPrioridadeDesabilitado');
-//     }
-// });
-
-// function eventoClickPrioridadeHabilitarCor(){
-//     const checkboxesPrioridade = document.querySelectorAll('.chkPrioridade');
-//     console.log(checkboxesPrioridade);
-//     checkboxesPrioridade.forEach(function(checkbox) {
-//         checkbox.addEventListener('click', function() {
-//             const divPrioridade = document.getElementById("radioPrioridade");
-//             divPrioridade.classList.add('radioPrioridade');
-//             divPrioridade.classList.remove('radioPrioridadeDesabilitado');
-//             document.getElementById('urgente').classList.add('chkPrioridade');
-//             document.getElementById('urgente').classList.remove('chkPrioridadeDesabilitado');
-//             document.getElementById('medio').classList.add('chkPrioridade');
-//             document.getElementById('medio').classList.remove('chkPrioridadeDesabilitado');
-//             document.getElementById('baixo').classList.add('chkPrioridade');
-//             document.getElementById('baixo').classList.remove('chkPrioridadeDesabilitado');
-//         });
-//     });
-// }
-
 document.getElementById("btn-gravar").addEventListener("click", function () {
   const elementosObrigatorios = document.querySelectorAll(
     '[data-obrigatorio="true"]'
   );
-  // console.log(elementosObrigatorios);
 
   let validadoCamposPreenhcidos = true;
 
   setTimeout(function () {
-    // validadoCamposPreenhcidos=true;
     if (validadoCamposPreenhcidos) {
       document.getElementById("modalSucesso").style.display = "block";
     }
@@ -222,7 +163,7 @@ document.getElementById("btn-gravar").addEventListener("click", function () {
 
   elementosObrigatorios.forEach(function (item) {
     if (item.value == "" || item.value == -1) {
-      item.style.backgroundColor = "red";
+      item.style.backgroundColor = "#e75656";
       validadoCamposPreenhcidos = false;
     }
   });
@@ -236,21 +177,22 @@ document.getElementById("btn-gravar").addEventListener("click", function () {
     chkBaixoValue == false
   ) {
     const divPrioridade = document.getElementById("radioPrioridade");
+
     divPrioridade.classList.remove("radioPrioridade");
     divPrioridade.classList.add("radioPrioridadeDesabilitado");
+
     document.getElementById("urgente").classList.remove("chkPrioridade");
     document
       .getElementById("urgente")
       .classList.add("chkPrioridadeDesabilitado");
     document.getElementById("medio").classList.remove("chkPrioridade");
-    document.getElementById("medio").classList.add("chkPrioridadeDesabilitado");
     document.getElementById("baixo").classList.remove("chkPrioridade");
     document.getElementById("baixo").classList.add("chkPrioridadeDesabilitado");
     validadoCamposPreenhcidos = false;
   }
 });
 
-function eventoClickPrioridadeHabilitarCor() {
+const eventoClickPrioridadeHabilitarCor = () => {
   const checkboxesPrioridade = document.querySelectorAll(".chkPrioridade");
   console.log(checkboxesPrioridade);
   checkboxesPrioridade.forEach(function (checkbox) {
@@ -272,9 +214,9 @@ function eventoClickPrioridadeHabilitarCor() {
         .classList.remove("chkPrioridadeDesabilitado");
     });
   });
-}
+};
 
-function adcionarRegraCamposSomenteNumeros() {
+const adcionarRegraCamposSomenteNumeros = () => {
   const elementosAceitaSoNumeros = document.querySelectorAll(
     '[data-only-number="true"]'
   );
@@ -285,12 +227,7 @@ function adcionarRegraCamposSomenteNumeros() {
       }
     });
   });
-} // adcionar numero
-
-// document.getElementById('fecharModal').addEventListener('click',function(){
-
-// })
-
+};
 document
   .getElementById("BtnInserirItens")
   .addEventListener("click", function () {
@@ -314,7 +251,7 @@ document
     const produtoPesquisado = produtos.filter(
       (p) => p.idProduto == campoProduto.value
     );
-    console.log(produtoPesquisado)
+    console.log(produtoPesquisado);
 
     tdCodigo.innerHTML = campoProduto.value;
     tdDrescricao.innerHTML = campoDescricaoProduto.value;
@@ -334,13 +271,12 @@ document
     totalRequisicao.value =
       parseFloat(totalRequisicao.value) +
       parseFloat(campoQuantidade.value * produtoPesquisado[0].Preco);
-
     tdBtnRemover.appendChild(criarBtnRemover(tabelaItens, linha));
     linha.appendChild(tdBtnRemover);
     tabelaItens.appendChild(linha);
   });
 
-function criarBtnRemover(tabela, objLinha, numeroLinha) {
+const criarBtnRemover = (tabela, objLinha, numeroLinha) => {
   const btnRemoverItem = document.createElement("div");
   btnRemoverItem.className = "BtnRemover";
   btnRemoverItem.id = "btnRemover" + numeroLinha;
@@ -356,66 +292,74 @@ function criarBtnRemover(tabela, objLinha, numeroLinha) {
     const colunas = objLinha.getElementsByTagName("td");
     let valorLinha = colunas[5].innerText;
 
-    totalRequisicao.value = parseFloat(totalRequisicao.value - parseFloat(valorLinha));
+    totalRequisicao.value = parseFloat(
+      (totalRequisicao.value = parseFloat(valorLinha))
+    );
   });
 
   return btnRemoverItem;
-}
+};
 
-document.addEventListener('DOMContentLoaded', function() {
-  const imagesWithTooltip = document.querySelectorAll('.image-with-tooltip');
+document.addEventListener("DOMContentLoaded", function () {
+  const imagesWithTooltip = document.querySelectorAll(".image-with-tooltip");
 
-  imagesWithTooltip.forEach(image => {
-      const tooltip = document.createElement('div');
-      tooltip.classList.add('tooltip');
-      tooltip.innerHTML = `<div class="tooltipDiv"><img src="/assets/img/verde.svg" alt="Imagem no Tooltip"><p>: Estoque acima de 10% do estoque mínimo.</p></div><div class="tooltipDiv"><img src="/assets/img/amarelo.svg" alt="Imagem no Tooltip"><p>: Estoque abaixo de 10% do estoque mínimo.</p></div><div class="tooltipDiv"><img src="/assets/img/vermelho.svg" alt="Imagem no Tooltip"><p>: Estoque abaixo do estoque mínimo.</p></div>`;
-      image.parentNode.appendChild(tooltip);
+  imagesWithTooltip.forEach((image) => {
+    const tooltip = document.createElement("div");
+    tooltip.classList.add("tooltip");
+    tooltip.innerHTML = `<div class="tooltipDiv"><img src="assets/img/verde.svg" alt="Imagem no Tooltip"><p>: Estoque acima de 10% do estoque mínimo.</p></div><div class="tooltipDiv"><img src="assets/img/amarelo.svg" alt="Imagem no Tooltip"><p>: Estoque abaixo de 10% do estoque mínimo.</p></div><div class="tooltipDiv"><img src="assets/img/vermelho.svg" alt="Imagem no Tooltip"><p>: Estoque abaixo do estoque mínimo.</p></div>`;
+    image.parentNode.appendChild(tooltip);
   });
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-  // Seleciona todos os inputs do tipo number
+// Seleciona todos os inputs do tipo number e desativa as setas para cada input do tipo number
+document.addEventListener("DOMContentLoaded", function () {
   var numberInputs = document.querySelectorAll('input[type="number"]');
-
-  // Desativa as setas para cada input do tipo number
   numberInputs.forEach(function (input) {
-    input.addEventListener('wheel', function (e) {
+    input.addEventListener("wheel", function (e) {
       e.preventDefault();
     });
   });
 });
 
-function verificarEstoque() {
-  const codigoProdutoInput = document.getElementById('CodigoProduto');
+const verificarEstoque = () => {
+  const codigoProdutoInput = document.getElementById("CodigoProduto");
   const codigoProduto = parseInt(codigoProdutoInput.value);
 
-  const produto = produtos.find(p => p.idProduto === codigoProduto);
+  const produto = produtos.find((p) => p.idProduto === codigoProduto);
 
   if (produto) {
-      const nivelImg = document.getElementById('nivel');
+    const nivelImg = document.getElementById("nivel");
 
-      const estoqueMinimo = produto.EstoqueMinimo;
-      const limiteSuperior = estoqueMinimo * 1.1;
-      const limiteInferior = estoqueMinimo * 0.9;
+    const estoqueMinimo = produto.EstoqueMinimo;
+    const limiteSuperior = estoqueMinimo * 1.1;
+    const limiteInferior = estoqueMinimo * 0.9;
 
-      if (produto.Estoque > limiteSuperior) {
-          nivelImg.src = "assets/img/verde.svg";
-      } else if (produto.Estoque < limiteInferior) {
-          nivelImg.src = "assets/img/vermelho.svg"; 
-      } 
-      else {
-          nivelImg.src = "assets/img/amarelo.svg"; 
-      }
+    if (produto.Estoque > limiteSuperior) {
+      nivelImg.src = "assets/img/verde.svg";
+    } else if (produto.Estoque < limiteInferior) {
+      nivelImg.src = "assets/img/vermelho.svg";
+    } else {
+      nivelImg.src = "assets/img/amarelo.svg";
     }
-    return;
-}
+  }
+};
 
+//Adcionar numero do pedido
+var inpNumero = document.getElementById("inpNumero");
+inpNumero.addEventListener("input", function () {
+  var numeroRequisicao = inpNumero.value;
 
-verificarEstoque();
-criarBtnRemover();
-adicionarCorAoFocarInput(); // Inicia a função ao carregar a página
+  var spanItensRequisicao = document
+    .getElementById("itensRequisicao")
+    .querySelector("span");
+
+  spanItensRequisicao.textContent =
+    "Itens da Requisição Nº " + numeroRequisicao;
+});
+
+adicionarCorAoFocarInput();
 carregarCategorias();
+verificarEstoque();
 carregarMotivos();
 adcionarRegraCamposSomenteNumeros();
-
-
+criarBtnRemover();
