@@ -3,7 +3,7 @@ const adicionarCorAoFocarInput = () => {
 
   listinput.forEach(function (campo) {
     campo.addEventListener("focus", function () {
-      campo.style.outlineColor = "#90ee90";
+      campo.style.outlineColor = "#4eff4e";
     });
 
     campo.addEventListener("blur", function () {
@@ -91,30 +91,11 @@ document
       (p) => p.idDep == codigoPesquisado
     );
 
-    if (departamentosFiltrados.length > 0) {
-      document.getElementById("departamento").value =
-        departamentosFiltrados[0].Descricao;
-    } else {
-      document.getElementById("departamento").value = "";
-    }
-    if (departamentosFiltrados.length > 0) {
-      document.getElementById("NomeFuncionario").value =
-        departamentosFiltrados[0].Responsavel;
-    } else {
-      document.getElementById("NomeFuncionario").value = "";
-    }
-    if (departamentosFiltrados.length > 0) {
-      document.getElementById("idFuncionario").value =
-        departamentosFiltrados[0].idFunc;
-    } else {
-      document.getElementById("idFuncionario").value = "";
-    }
-    if (departamentosFiltrados.length > 0) {
-      document.getElementById("cargo").value =
-        departamentosFiltrados[0].idCargo;
-    } else {
-      document.getElementById("cargo").value = "";
-    }
+    if(departamentosFiltrados.length > 0){
+      document.getElementById('departamento').value=departamentosFiltrados[0].Descricao;
+  } else{
+      document.getElementById('departamento').value="";
+  }
   });
 
 document.getElementById("idFuncionario").addEventListener("keyup", function () {
@@ -123,24 +104,14 @@ document.getElementById("idFuncionario").addEventListener("keyup", function () {
     (p) => p.idFunc == codigoPesquisado
   );
 
-  if (departamentosFiltrados.length > 0) {
-    document.getElementById("departamento").value =
-      departamentosFiltrados[0].Descricao;
-  } else {
-    document.getElementById("departamento").value = "";
-  }
+
   if (departamentosFiltrados.length > 0) {
     document.getElementById("NomeFuncionario").value =
       departamentosFiltrados[0].Responsavel;
   } else {
     document.getElementById("NomeFuncionario").value = "";
   }
-  if (departamentosFiltrados.length > 0) {
-    document.getElementById("idDepartamento").value =
-      departamentosFiltrados[0].idDep;
-  } else {
-    document.getElementById("idDepartamento").value = "";
-  }
+
   if (departamentosFiltrados.length > 0) {
     document.getElementById("cargo").value = departamentosFiltrados[0].idCargo;
   } else {
@@ -306,7 +277,7 @@ document.addEventListener("DOMContentLoaded", function () {
   imagesWithTooltip.forEach((image) => {
     const tooltip = document.createElement("div");
     tooltip.classList.add("tooltip");
-    tooltip.innerHTML = `<div class="tooltipDiv"><img src="assets/img/verde.svg" alt="Imagem no Tooltip"><p>: Estoque acima de 10% do estoque mínimo.</p></div><div class="tooltipDiv"><img src="assets/img/amarelo.svg" alt="Imagem no Tooltip"><p>: Estoque abaixo de 10% do estoque mínimo.</p></div><div class="tooltipDiv"><img src="assets/img/vermelho.svg" alt="Imagem no Tooltip"><p>: Estoque abaixo do estoque mínimo.</p></div>`;
+    tooltip.innerHTML = `<div class="tooltipDiv"><img src="assets/img/verde.svg" alt="Imagem no Tooltip"><p>: Estoque acima, ou igual de 10% do Estoque mínimo.</p></div><div class="tooltipDiv"><img src="assets/img/amarelo.svg" alt="Imagem no Tooltip"><p>: Estoque abaixo de 10% e maior ou igual que o Estoque mínimo.</p></div><div class="tooltipDiv"><img src="assets/img/vermelho.svg" alt="Imagem no Tooltip"><p>: Estoque abaixo do estoque mínimo.</p></div>`;
     image.parentNode.appendChild(tooltip);
   });
 });

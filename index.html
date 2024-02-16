@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="assets/css/tooltip.css" />
     <link rel="stylesheet" href="assets/css/responsividade.css" />
 </head>
-
 <body>
     <div class="container">
         <header class="header">
@@ -29,13 +28,12 @@
                             <input
                             type="text"
                             id="idDepartamento"
-                            data-obrigatorio="true"
                             data-only-number="true"
                             />
                         </div>
                         <div class="grupo2 grupoInput">
                             <span>Departamento</span>
-                            <input type="text" id="departamento" data-obrigatorio="true" />
+                            <input type="text" id="departamento" disabled />
                         </div>
                         <div class="grupo3 grupoInput">
                             <span>Data</span>
@@ -52,17 +50,16 @@
                             <input
                             type="text"
                             id="idFuncionario"
-                            data-obrigatorio="true"
                             data-only-number="true"
                             />
                         </div>
                         <div class="grupo5 grupoInput">
                             <span>Nome Funcionário</span>
-                            <input type="text" id="NomeFuncionario"                             data-obrigatorio="true"/>
+                            <input type="text" id="NomeFuncionario" disabled />
                         </div>
                         <div class="grupo6 grupoInput">
                             <span>Cargo</span>
-                            <input type="text" id="cargo" data-obrigatorio="true" />
+                            <input type="text" id="cargo" disabled />
                         </div>
                     </div>
                     <div class="camposPrincipaisLinha3 linhasCampos">
@@ -137,11 +134,12 @@
                             type="text"
                             id="DescricaoProduto"
                             data-obrigatorio="true"
+                            disabled 
                             />
                         </div>
                         <div class="grupoEstoque">
                             <span>Estoque</span>
-                            <input type="number" id="Estoque" data-obrigatorio="true" />
+                            <input type="number" id="Estoque" data-obrigatorio="true" disabled />
                         </div>
                         <div class="grupoQuantidade">
                             <span>Quantidade</span>
@@ -182,7 +180,7 @@
                     </div>
                     <div class="grupoTotal">
                         <span>Total</span>
-                        <input type="number" id="total" data-obrigatorio="true" />
+                        <input type="number" id="total" data-obrigatorio="true" disabled />
                     </div>
                     <div class="grupoBtnInserirItens"></div>
                     <div class="BtnInserirItens" id="btn-gravar">
@@ -192,7 +190,6 @@
             </div>
         </form>
     </div>
-    
     <script src="assets/scripts/dados.js"></script>
     <script src="assets/scripts/main.js"></script>
 </body>
